@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="js/jquery.min.js"></script>
+	<script rel="stylesheet" href="js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="modal" id="login" ng-controller="studentCtrl">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title col-lg-11 text-center">Đăng Nhập</h4>
+						<button type="button" class="close" id="cancelLog" data-dismiss="modal">&times;</button>
+					</div>
+					<div class="modal-body">
+						<form class="col-lg-12 px-0">
+							<div class="col-lg-9 mx-auto">
+								<label class="text-danger ml-3">{{errLogin}}</label>
+								<div class="form-group row text-center ">
+									<input class="col-lg-10 px-0 mx-auto" type="text" ng-model="taiKhoan">
+								</div>
+								<div class="form-group row text-center ">
+									<input class="col-lg-10 px-0 mx-auto" type="text" ng-model="matKhau">
+								</div>
+								<div class="form-group row text-center">
+									<button class="btn btn-primary col-lg-10 px-0 mx-auto" ng-click="login()">Đăng nhập</button>
+								</div>
+							</div>
+						</form>
+						<div class="col-lg-12 text-center">
+							<a href="#">Quyên mật khẩu?</a><br/>
+							<a href="#">Chưa có tài khoản?Đăng Ký</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--------------ABC--------------------------->
+		<div class="modal" id="register" ng-controller="studentCtrl">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title col-lg-11 text-center">Đăng Ký</h4>
+						<button type="button" class="close" data-dismiss="modal" id="cancelreg">&times;</button>
+					</div>
+					<div class="modal-body">
+						<form class="col-lg-12 mt-3 px-0">
+							<div class="col-lg-9 mx-auto">
+								<label class="text-danger ml-3">{{errRegister}}</label>
+								<div class="form-group row text-center">
+									<input class="col-lg-10 px-0 mx-auto" placeholder="Họ Tên" type="text" ng-model="reg.fullname">
+								</div>
+								<div class="form-group row text-center">
+									<input class="col-lg-10 px-0 mx-auto" placeholder="Tài Khoản" type="text" ng-model="reg.username" value="">
+								</div>
+								<div class="form-group row text-center">
+									<input class="col-lg-10 px-0 mx-auto" placeholder="Mật Khẩu" type="text" ng-model="reg.password" ng-Focus="checkUser()">
+								</div>
+								<div class="form-group row text-center">
+									<input class="col-lg-10 px-0 mx-auto" placeholder="Ngày sinh" type="date" ng-model="reg.birthday">
+								</div>
+								<div class="form-group row text-center">
+									<input class="col-lg-10 px-0 mx-auto" placeholder="Email" type="text" ng-model="reg.email">
+								</div>
+								<div class="form-group row text-center">
+									<div class="col-lg-4"></div>
+									<input  type="radio" checked="checked" name="gioitinh" value="true" ng-model="reg.gender">Nam
+									<div class="col-lg-1"></div>
+									<input  type="radio" name="gioitinh" value="false" ng-model="reg.gender">Nữ
+								</div>
+
+								<div class="form-group row ctext-center">
+									<button class="btn btn-primary col-lg-10 px-0 mx-auto" ng-click="register()">Đăng ký</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>	
+			</div>
+		</div>
+		<div class="row bg-black">
+			<div class="col-lg-4"><img class="logo" src="image/Poly.png" alt=""></div>
+			<nav class="navbar navbar-expand-sm  offset-lg-3" ng-controller="studentCtrl">
+			  <ul class="navbar-nav">
+			  	<li class="nav-item active">
+			      <a class="nav-link color-orange" href="index.html">Trang chủ</a>
+			    </li>
+			    <li class="nav-item active">
+			      <a class="nav-link color-orange" href="gioithieu.html">Giới Thiệu</a>
+			    </li>
+			    <li class="nav-item active">
+			      <a class="nav-link color-orange" href="gopy.html">Góp Ý</a>
+			    </li>
+			    <li class="nav-item active">
+			      <a class="nav-link color-orange" href="hoidap.html">Hỏi Đáp</a>
+			    </li>
+			    <li class="nav-item dropdown">
+			      <a class="nav-link dropdown-toggle color-orange" href="#" id="navbardrop" data-toggle="dropdown">
+			        Tài Khoản
+			      </a>
+			      <div class="dropdown-menu">
+			        <a class="dropdown-item border-bottom color-orange" href="#" data-toggle="modal" data-target="#register" >Đăng ký</a>
+			        <a class="dropdown-item border-bottom color-orange" href="#" data-toggle="modal" data-target="#login">Đăng nhập</a>
+			        <a class="dropdown-item border-bottom color-orange" ng-click="logout()"href="#">Đăng xuất</a>
+			        <a class="dropdown-item border-bottom color-orange" href="#!/mark">Điểm Thi</a>
+			      </div>
+			    </li>
+			  </ul>
+			</nav>
+			
+		</div>
+		<div class="row">
+			<div class="col-lg-3 mx-l-1">
+				<div id="accordion" >
+                    <div class="card">
+                        <div class="card-header bg-black">
+                            <strong data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1" class=" color-orange">
+                                Công nghệ thông tin
+                            </strong>
+
+                        </div>
+                        <div id="collapse1" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item bg-black color-orange">Thiết kế - Lập trình website</a>
+                                <a href="#" class="list-group-item bg-black color-orange">CNTT - Ứng dụng phần mềm</a>
+                                <a href="#" class="list-group-item bg-black color-orange">Lập trình máy tính - Thiết bị di động</a>
+                                <a href="#" class="list-group-item bg-black color-orange">Thiết kế đồ họa - Mỹ thuật đa phương tiện</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!---------------ABC---------------->
+                    <div class="card">
+                        <div class="card-header bg-black">
+                            <strong data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2" class=" color-orange">
+                                Kinh tế - Kinh doanh
+                            </strong>
+
+                        </div>
+                        <div id="collapse2" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item bg-black color-orange">Quan hệ công chúng - PR & Tổ chức sự kiện</a>
+                                <a href="#" class="list-group-item bg-black color-orange">Thương mại điện tử - Digital & Online Marketing</a>
+                                <a href="#" class="list-group-item bg-black color-orange">Quản trị doanh nghiệp - Marketing & Sales</a>
+                                <a href="#" class="list-group-item bg-black color-orange">Thiết kế đồ họa - Mỹ thuật đa phương tiện</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!---------------ABC---------------->
+                    <div class="card">
+                        <div class="card-header bg-black">
+                            <strong data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3" class=" color-orange">
+                                Du lịch - Lữ hành - Nhà hàng - Khách sạn
+                            </strong>
+
+                        </div>
+                        <div id="collapse3" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item bg-black color-orange">Hướng dẫn du lịch</a>
+                                <a href="#" class="list-group-item bg-black color-orange">Quản trị nhà hàng</a>
+                                <a href="#" class="list-group-item bg-black color-orange">Quản trị khách sạn</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-------------------ABC--------------->
+                    <div class="card">
+                        <div class="card-header bg-black">
+                            <strong data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4" class=" color-orange">
+                                Thẩm mỹ - Làm đẹp
+                            </strong>
+
+                        </div>
+                        <div id="collapse4" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item bg-black color-orange">Chăm sóc da và spa</a>
+                                <a href="#" class="list-group-item bg-black color-orange">Thiết kế mẫu tóc</a>
+                                <a href="#" class="list-group-item bg-black color-orange">Trang điểm nghệ thuật</a>
+                                <a href="#" class="list-group-item bg-black color-orange">Phun xăm thẩm mỹ</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-------------------ABC--------------->
+                </div>
+			</div>
+			<div class="col-lg-9 px-0 bg-gray py-3">
+				<div class="row">
+					<div class="col-lg-9 mx-auto" style="background-color: white">
+						<img class="logo" style="height:90px" src="image/Poly.png" alt="">
+					</div>
+					
+				</div>
+				<div class="row col-lg-9 mx-auto">
+					<div class="col-lg-4">Tên Khác</div>
+					<div class="col-lg-8">FPT Polytechnic/FPoly</div>
+					<div class="text-center col-lg-12 bg-gray-plus">Thông tin chung</div>
+					<div class="col-lg-4">Giới thiệu</div>
+					<div class="col-lg-8">Cao đẳng thực hành FPT Polytechnic là trường đào tạo trong lòng doanh nghiệp, xuất phát từ Tập đoàn FPT, đào tạo sinh viên với triết lý "Thực học - Thực nghiệp. FPT Polytechnic được thành lập vào tháng 7 năm 2010. Hiện tại, FPT Polytechnic đang có 7 cơ sở trên toàn quốc.</div>
+					<div class="text-center col-lg-12 bg-gray-plus">Thông tin khác</div>
+					<div class="col-lg-4">Email</div>
+					<div class="col-lg-8"><a href="#">caodang@fpt@fpt.edu.vn</a></div>
+					<div class="col-lg-4">Website</div>
+					<div class="col-lg-8"><a href="#">https://caodang.fpt.edu.vn</a></div>
+				</div>
+			</div>
+				
+			
+
+		</div>
+		<div class="row bg-black">
+			<div class="col-lg-4">
+				<div class="row mb-3"><img class="logo" src="image/iconpoly.png" alt=""></div>
+				<ul class="nav flex-column">
+					<li><h5 class="color-orange">Thông Tin Liên Hệ</h5></li>
+				    <li class="nav-item color-orange">
+				      Trụ Sở Chính
+				    </li>
+				    <li class="nav-item ">
+				     	Tòa Nhà FPT Polytechnic,Phố Trịnh Văn Bô,Nam Từ Liêm,Hà Nội
+				    </li>
+				    <li class="nav-item ">
+				      Điện thoại:(024) 7300 1655 - Email:caodang@fpt.edu.vn
+				    </li>
+				</ul>
+			</div>
+			<div class="col-lg-8">
+				<ul class="nav flex-column col-lg-6 float-left">
+					<li><h5 class="color-orange">Hệ Thống Cơ Sở Đào Tạo</h5></li>
+				    <li class="nav-item color-orange ">
+				      Cơ sở Hà Nội
+				    </li>
+				    <li class="nav-item  ">
+				      Tòa nhà FPT Polytechnic,Phố Trịnh Văn Bô,Nam Từ Liêm,Hà Nội
+				    </li>
+				    <li class="nav-item  ">
+				      (024)7300 1955
+				    </li>
+				    <li class="nav-item  color-orange">
+				      Cơ sở Đà Nẵng
+				    </li>
+				    <li class="nav-item  ">
+				      Số 137 Nguyễn Thị Thập,Phường Hòa Minh,Quận Liên Chiểu,TP.Đà Nẵng
+				    </li>
+				    <li class="nav-item  ">
+				      (0236) 3710 999
+				    </li>
+				    <li class="nav-item  color-orange">
+				      Cơ sở TP.Hồ Chí Minh
+				    </li>
+				    <li class="nav-item  ">
+				      391A Nam Kỳ Khởi Nghĩa,Q.3,Tp.Hồ Chí Minh
+				    </li>
+				    <li class="nav-item  ">
+				      (028) 3526 8799 - (028) 62523434
+				    </li>
+				</ul>
+				<ul class="nav flex-column col-lg-6 float-left">
+					<li>&#160;</li>
+				    <li class="nav-item  color-orange">
+				      Cơ sở Tây Nguyên
+				    </li>
+				    <li class="nav-item  ">
+				      Số 27,Tòa Nhà VIB(Tầng 2),đường Nguyễn Tất Thành,Tân Lợi,TP.Buôn Mê Thuật,Đăk Lăk
+				    </li>
+				    <li class="nav-item  ">
+				      (0262)335 5678
+				    </li>
+				    <li class="nav-item  color-orange">
+				      Cơ sở Cần Thơ
+				    </li>
+				    <li class="nav-item  ">
+				      Số 288,Nguyễn Văn Linh,Phường An Khánh,quận Ninh Kiều,TP.Cần Thơ
+				    </li>
+				    <li class="nav-item  ">
+				      (0292) 7300 468
+				    </li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>

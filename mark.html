@@ -1,0 +1,21 @@
+<div ng-controller="quizCtrl" class="col-lg-12">
+	<div ng-init="loadData()"> 
+		<table class="table table-striped mt-4">
+			<thead>
+				<tr>
+					<th class="color-orange">Họ Và Tên</th>
+					<th class="color-orange">Môn Học</th>
+					<th class="color-orange">Điểm</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="info in infoStudent | filter:username">
+					<td class="color-orange">{{info.name}}</td>
+					<td class="color-orange">{{info.subject}}</td>
+					<td class="color-orange">{{info.marks}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+</div>

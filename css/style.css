@@ -1,0 +1,24 @@
+.bg-black{
+	background-color: #28292d;
+	color: white;
+}
+.color-orange{
+	color: #f7941d;
+}
+.color-orange:hover{
+	text-shadow:0 0 10px #f7941d,0 0 40px #f7941d,0 0 80px #f7941d;
+	color: #f7941d;
+}
+.logo{
+	width:100%;
+	height:70px;
+}
+.bg-gray-plus{
+	background-color: #aaa;
+}
+.bg-gray{
+	background-color: #f9f9f9;
+}
+.color-blue{
+	color: #007bff;
+}

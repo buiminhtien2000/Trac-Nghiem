@@ -1,0 +1,19 @@
+<div class="col-lg-4" ng-repeat="subject in list_subject| limitTo :9:begin">
+	<a href="#!quiz/{{subject.Id}}/{{subject.Name}}">
+		<div class="card">
+			<div class="card-body">
+				<img src="image/logos/{{subject.Logo}}">
+			</div>
+			<div class="card-footer">
+					{{subject.Name}}
+			</div>
+		</div>
+	</a>
+</div>
+<div class="col-lg-12 mt-3">
+	<ul class="pagination justify-content-center">
+	    <li class="page-item"><a class="page-link" ng-click="prev()" style="cursor: pointer;">Previous</a></li>
+	    <li class="page-item"><a class="page-link">{{numPage}}/2</a></li>
+	    <li class="page-item"><a class="page-link" ng-click="next()" style="cursor: pointer;">Next</a></li>
+  </ul>
+</div>

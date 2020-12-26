@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="js/jquery.min.js"></script>
+	<script rel="stylesheet" href="js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="modal" id="login" ng-controller="studentCtrl">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title col-lg-11 text-center">Đăng Nhập</h4>
+						<button type="button" class="close" id="cancelLog" data-dismiss="modal">&times;</button>
+					</div>
+					<div class="modal-body">
+						<form class="col-lg-12 px-0">
+							<div class="col-lg-9 mx-auto">
+								<label class="text-danger ml-3">{{errLogin}}</label>
+								<div class="form-group row text-center ">
+									<input class="col-lg-10 px-0 mx-auto" type="text" ng-model="taiKhoan">
+								</div>
+								<div class="form-group row text-center ">
+									<input class="col-lg-10 px-0 mx-auto" type="text" ng-model="matKhau">
+								</div>
+								<div class="form-group row text-center">
+									<button class="btn btn-primary col-lg-10 px-0 mx-auto" ng-click="login()">Đăng nhập</button>
+								</div>
+							</div>
+						</form>
+						<div class="col-lg-12 text-center">
+							<a href="#">Quyên mật khẩu?</a><br/>
+							<a href="#">Chưa có tài khoản?Đăng Ký</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--------------ABC--------------------------->
+		<div class="modal" id="register" ng-controller="studentCtrl">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title col-lg-11 text-center">Đăng Ký</h4>
+						<button type="button" class="close" data-dismiss="modal" id="cancelreg">&times;</button>
+					</div>
+					<div class="modal-body">
+						<form class="col-lg-12 mt-3 px-0">
+							<div class="col-lg-9 mx-auto">
+								<label class="text-danger ml-3">{{errRegister}}</label>
+								<div class="form-group row text-center">
+									<input class="col-lg-10 px-0 mx-auto" placeholder="Họ Tên" type="text" ng-model="reg.fullname">
+								</div>
+								<div class="form-group row text-center">
+									<input class="col-lg-10 px-0 mx-auto" placeholder="Tài Khoản" type="text" ng-model="reg.username" value="">
+								</div>
+								<div class="form-group row text-center">
+									<input class="col-lg-10 px-0 mx-auto" placeholder="Mật Khẩu" type="text" ng-model="reg.password" ng-Focus="checkUser()">
+								</div>
+								<div class="form-group row text-center">
+									<input class="col-lg-10 px-0 mx-auto" placeholder="Ngày sinh" type="date" ng-model="reg.birthday">
+								</div>
+								<div class="form-group row text-center">
+									<input class="col-lg-10 px-0 mx-auto" placeholder="Email" type="text" ng-model="reg.email">
+								</div>
+								<div class="form-group row text-center">
+									<div class="col-lg-4"></div>
+									<input  type="radio" checked="checked" name="gioitinh" value="true" ng-model="reg.gender">Nam
+									<div class="col-lg-1"></div>
+									<input  type="radio" name="gioitinh" value="false" ng-model="reg.gender">Nữ
+								</div>
+
+								<div class="form-group row ctext-center">
+									<button class="btn btn-primary col-lg-10 px-0 mx-auto" ng-click="register()">Đăng ký</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>	
+			</div>
+		</div>
+		<div class="row bg-black">
+			<div class="col-lg-4"><img class="logo" src="image/Poly.png" alt=""></div>
+			<nav class="navbar navbar-expand-sm  offset-lg-3" ng-controller="studentCtrl">
+			  <ul class="navbar-nav">
+			  	<li class="nav-item active">
+			      <a class="nav-link color-orange" href="index.html">Trang chủ</a>
+			    </li>
+			    <li class="nav-item active">
+			      <a class="nav-link color-orange" href="gioithieu.html">Giới Thiệu</a>
+			    </li>
+			    <li class="nav-item active">
+			      <a class="nav-link color-orange" href="gopy.html">Góp Ý</a>
+			    </li>
+			    <li class="nav-item active">
+			      <a class="nav-link color-orange" href="hoidap.html">Hỏi Đáp</a>
+			    </li>
+			    <li class="nav-item dropdown">
+			      <a class="nav-link dropdown-toggle color-orange" href="#" id="navbardrop" data-toggle="dropdown">
+			        Tài Khoản
+			      </a>
+			      <div class="dropdown-menu">
+			        <a class="dropdown-item border-bottom color-orange" href="#" data-toggle="modal" data-target="#register" >Đăng ký</a>
+			        <a class="dropdown-item border-bottom color-orange" href="#" data-toggle="modal" data-target="#login">Đăng nhập</a>
+			        <a class="dropdown-item border-bottom color-orange" ng-click="logout()"href="#">Đăng xuất</a>
+			        <a class="dropdown-item border-bottom color-orange" href="#!/mark">Điểm Thi</a>
+			      </div>
+			    </li>
+			  </ul>
+			</nav>
+			
+		</div>
+		<div class="row">
+			<div class="col-lg-12 px-0 bg-gray py-3">
+				<div class="col-lg-9 mx-auto text-center">
+					<p>Mọi ý kiến đóng góp xin vui lòng gửi thư đến trụ sở chính:</p>
+					<p>Tòa Nhà FPT Polytechnic,Phố Trịnh Văn Bô,Nam Từ Liêm,Hà Nội </p>
+					<p>số điện thoại: (024)7300 1955</p>
+					<p> Hoặc</p>
+					<p>Gửi Email theo địa chỉ:</p>
+				 	<p>caodang@fpt.edu.vn </p>
+				 	<p>Xin chân thành cảm ơn!</p>
+				</div>
+				
+			</div>
+
+		</div>
+		<div class="row bg-black">
+			<div class="col-lg-4">
+				<div class="row mb-3"><img class="logo" src="image/iconpoly.png" alt=""></div>
+				<ul class="nav flex-column">
+					<li><h5 class="color-orange">Thông Tin Liên Hệ</h5></li>
+				    <li class="nav-item color-orange">
+				      Trụ Sở Chính
+				    </li>
+				    <li class="nav-item ">
+				     	Tòa Nhà FPT Polytechnic,Phố Trịnh Văn Bô,Nam Từ Liêm,Hà Nội
+				    </li>
+				    <li class="nav-item ">
+				      Điện thoại:(024) 7300 1655 - Email:caodang@fpt.edu.vn
+				    </li>
+				</ul>
+			</div>
+			<div class="col-lg-8">
+				<ul class="nav flex-column col-lg-6 float-left">
+					<li><h5 class="color-orange">Hệ Thống Cơ Sở Đào Tạo</h5></li>
+				    <li class="nav-item color-orange ">
+				      Cơ sở Hà Nội
+				    </li>
+				    <li class="nav-item  ">
+				      Tòa nhà FPT Polytechnic,Phố Trịnh Văn Bô,Nam Từ Liêm,Hà Nội
+				    </li>
+				    <li class="nav-item  ">
+				      (024)7300 1955
+				    </li>
+				    <li class="nav-item  color-orange">
+				      Cơ sở Đà Nẵng
+				    </li>
+				    <li class="nav-item  ">
+				      Số 137 Nguyễn Thị Thập,Phường Hòa Minh,Quận Liên Chiểu,TP.Đà Nẵng
+				    </li>
+				    <li class="nav-item  ">
+				      (0236) 3710 999
+				    </li>
+				    <li class="nav-item  color-orange">
+				      Cơ sở TP.Hồ Chí Minh
+				    </li>
+				    <li class="nav-item  ">
+				      391A Nam Kỳ Khởi Nghĩa,Q.3,Tp.Hồ Chí Minh
+				    </li>
+				    <li class="nav-item  ">
+				      (028) 3526 8799 - (028) 62523434
+				    </li>
+				</ul>
+				<ul class="nav flex-column col-lg-6 float-left">
+					<li>&#160;</li>
+				    <li class="nav-item  color-orange">
+				      Cơ sở Tây Nguyên
+				    </li>
+				    <li class="nav-item  ">
+				      Số 27,Tòa Nhà VIB(Tầng 2),đường Nguyễn Tất Thành,Tân Lợi,TP.Buôn Mê Thuật,Đăk Lăk
+				    </li>
+				    <li class="nav-item  ">
+				      (0262)335 5678
+				    </li>
+				    <li class="nav-item  color-orange">
+				      Cơ sở Cần Thơ
+				    </li>
+				    <li class="nav-item  ">
+				      Số 288,Nguyễn Văn Linh,Phường An Khánh,quận Ninh Kiều,TP.Cần Thơ
+				    </li>
+				    <li class="nav-item  ">
+				      (0292) 7300 468
+				    </li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
